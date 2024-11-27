@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
+    <BrowserRouter basename='/Assignment'>
     <Nav />
     <Routes>
      <Route path="/" element={<ResourcesPage/>} >
