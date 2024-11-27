@@ -16,7 +16,7 @@ const Nav = () => {
             className="object-contain shrink-0 aspect-[2.05] w-[82px]"
           />
           <div className="flex gap-8">
-           {!isRootRoute &&(<Link to="/add" className="overflow-hidden gap-2.5 self-stretch px-5 py-2 bg-green-500 rounded">
+           {!isRootRoute && (<Link to="/add" className="overflow-hidden gap-2.5 self-stretch px-5 py-2 bg-green-500 rounded">
               ADD ITEM
             </Link>)}
             <img

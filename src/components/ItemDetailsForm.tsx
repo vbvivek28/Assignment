@@ -1,10 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
-import {ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+interface FormData {
+  title: string;
+  link: string;
+  iconUrl: string;
+  tagName: string;
+  category: string;
+  description: string;
+}
+
 const ItemDetailsForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     title: "",
     link: "",
     iconUrl: "",
@@ -13,18 +22,21 @@ const ItemDetailsForm = () => {
     description: "",
   });
 
-  const handleChange = (field, value) => {
+  const handleChange = (field: keyof FormData, value: string) => {
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("https://media-content.ccbp.in/website/react-assignment/add_resource.json", formData);
+      const response = await axios.post(
+        "https://media-content.ccbp.in/website/react-assignment/add_resource.json",
+        formData
+      );
       if (response.status === 200) {
         toast.success("Item created successfully!");
       } else {
@@ -38,7 +50,7 @@ const ItemDetailsForm = () => {
 
   return (
     <div>
-        <ToastContainer position="bottom-right"/>
+      <ToastContainer position="bottom-right" />
       <form
         className="flex flex-col self-end mt-28 w-80 max-w-full text-sm leading-6 max-md:mt-10 "
         onSubmit={handleSubmit}
